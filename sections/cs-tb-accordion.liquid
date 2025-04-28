@@ -1,0 +1,131 @@
+{{ 'cs-tb-accordion.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cs-tb-accordion.js' | asset_url }}" defer="defer"></script>
+
+<section
+  class="accordion-section{% if section.settings.enable_scroll_animation %} scroll-animate-enabled scroll-fade-in{% endif %}"
+  {% if section.settings.enable_scroll_animation %}
+  data-animation-speed="{{ section.settings.animation_speed }}"
+  {% endif %}>
+  <div class="accordion-section-upper">
+    {% if section.settings.accordion_header != blank %}
+      <h1 class="accordion-header">{{ section.settings.accordion_header }}</h1>
+    {% endif %}
+  </div>
+
+  <div class="accordion-section-inner">
+    {% for block in section.blocks %}
+      <div class="accordion-item scroll-fade-in {% if section.settings.separation_line == true %}with-separator{% endif %}" style="transition-delay: {{ forloop.index0 | times: section.settings.animation_speed | divided_by: 4 }}ms;">
+        <div class="accordion-item-head">
+          <button
+            class="accordion-toggle"
+            aria-expanded="false"
+            aria-controls="accordion-content-{{ block.id }}">
+            <h2>{{ block.settings.item_title }}</h2>
+
+            <svg
+              class="icon-tb-toggle"
+              width="11"
+              height="11"
+              viewBox="0 0 11 11"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <g>
+                  <!-- Horizontal line -->
+                <rect
+                  class="line-horizontal"
+                  x="1"
+                  y="5"
+                  width="9"
+                  height="1"
+                  fill="#212121" />
+                  <!-- Vertical line -->
+                <rect
+                  class="line-vertical"
+                  x="5"
+                  y="1"
+                  width="1"
+                  height="9"
+                  fill="#212121" />
+              </g>
+            </svg>
+
+
+          </button>
+        </div>
+
+        <div
+          id="accordion-content-{{ block.id }}"
+          class="accordion-content"
+          hidden>
+          <p class="accordion-item-text">{{ block.settings.item_text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Accordion",
+    "settings": [
+      {
+        "type": "text",
+        "id": "accordion_header",
+        "label": "Accordion Header"
+      }, {
+        "type": "checkbox",
+        "id": "separation_line",
+        "label": "Separation line between items",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "enable_scroll_animation",
+        "label": "Enable Scroll Animation",
+        "default": true
+      }, {
+        "type": "range",
+        "id": "animation_speed",
+        "label": "Scroll Animation Speed (ms)",
+        "min": 100,
+        "max": 1500,
+        "step": 100,
+        "default": 600
+      }
+    ],
+    "blocks": [
+      {
+        "type": "accordion_item",
+        "name": "Accordion Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "item_title",
+            "label": "Title",
+            "default": "Title"
+          }, {
+            "type": "richtext",
+            "id": "item_text",
+            "label": "Item Text",
+            "default": "<p>Accordion item content</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Accordion",
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "accordion_item"
+          }, {
+            "type": "accordion_item"
+          }, {
+            "type": "accordion_item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

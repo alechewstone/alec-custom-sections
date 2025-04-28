@@ -1,0 +1,150 @@
+{{ 'cs-tb-carousel.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
+
+<section
+  class="carousel-section{% if section.settings.enable_scroll_animation %} scroll-animate-enabled scroll-fade-in{% endif %}"
+  {% if section.settings.enable_scroll_animation %}
+  data-animation-speed="{{ section.settings.animation_speed }}"
+  {% endif %}>
+
+  {% assign collection = collections[section.settings.product_collection] %}
+  <div class="carousel-header">
+    {% if section.settings.carousel_title != blank %}
+      <h2>{{ section.settings.carousel_title }}&nbsp</h2>
+    {% else %}
+      <h2>{{ collection.title }}&nbsp</h2>
+    {% endif %}
+
+    {% if section.settings.carousel_subtitle != blank %}
+      <h2 class="subtle-header">{{ section.settings.carousel_subtitle }}</h2>
+    {% else %}
+      <h2 class="subtle-header">{{ collection.description }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="carousel-track">
+    {% for product in collection.products %}
+      <div class="carousel-card">
+        <a href="{{ product.url }}">
+          <div class="carousel-card-image">
+            <img
+              src="{{ product.featured_image | image_url: width: 600 }}"
+              width="500"
+              height="auto"
+              alt="{{ product.title }}">
+          </div>
+          <div class="carousel-card-info">
+            <div class="carousel-card-info-header">
+              <h3 class="product-title">{{ product.title }}</h3>
+            </div>
+            <div class="carousel-card-info-desc">
+              {% if product.metafields.custom.highlight != blank %}
+                <p class="product-highlight">{{ product.metafields.custom.highlight }}.</p>
+              {% endif %}
+              {% if product.price %}
+                <p class="product-price">{{ product.price | money }}</p>
+              {% endif %}
+            </div>
+
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  {% if section.settings.show_scroll_arrows %}
+    <div class="carousel-arrows">
+      <button class="carousel-arrow carousel-arrow--left" aria-label="Scroll left">
+        <!-- Flip the right arrow SVG horizontally for left -->
+        <svg
+          class="carousel-arrow-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
+          <polyline
+            points="16 4 8 12 16 20"
+            fill="none"
+            stroke="#606162"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+
+      </button>
+
+      <button class="carousel-arrow carousel-arrow--right" aria-label="Scroll right">
+        <!-- Original right arrow -->
+        <svg
+          class="carousel-arrow-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
+          <polyline
+            points="16 4 8 12 16 20"
+            fill="none"
+            stroke="#606162"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+
+      </button>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+  {
+    "name": "Collection carousel",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "product_collection",
+        "label": "Product Collection"
+      },
+      {
+        "type": "text",
+        "id": "carousel_title",
+        "label": "Carousel Title"
+      },
+      {
+        "type": "text",
+        "id": "carousel_subtitle",
+        "label": "Carousel Subtitle"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_highlight",
+        "label": "Show Product Highlight (Metafield)",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_scroll_arrows",
+        "label": "Show Scroll Arrows",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "enable_scroll_animation",
+        "label": "Enable Scroll Animation",
+        "default": true
+      }, {
+        "type": "range",
+        "id": "animation_speed",
+        "label": "Scroll Animation Speed (ms)",
+        "min": 100,
+        "max": 1500,
+        "step": 100,
+        "default": 600
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection carousel",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
