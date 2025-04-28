@@ -2,7 +2,8 @@
 <script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
 
 <section
-  class="carousel-section{% if section.settings.enable_scroll_animation %} scroll-animate-enabled scroll-fade-in{% endif %}"
+  class="carousel-section{% if section.settings.enable_scroll_animation %} scroll-animate-enabled{% endif %}{% if section.settings.sequential_fade %} sequential-fade{% endif %}"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px"
   {% if section.settings.enable_scroll_animation %}
   data-animation-speed="{{ section.settings.animation_speed }}"
   {% endif %}>
@@ -24,7 +25,7 @@
 
   <div class="carousel-track">
     {% for product in collection.products %}
-      <div class="carousel-card">
+      <div class="carousel-card scroll-fade-in">
         <a href="{{ product.url }}">
           <div class="carousel-card-image">
             <img
@@ -54,7 +55,6 @@
   {% if section.settings.show_scroll_arrows %}
     <div class="carousel-arrows">
       <button class="carousel-arrow carousel-arrow--left" aria-label="Scroll left">
-        <!-- Flip the right arrow SVG horizontally for left -->
         <svg
           class="carousel-arrow-icon"
           width="24"
@@ -74,7 +74,6 @@
       </button>
 
       <button class="carousel-arrow carousel-arrow--right" aria-label="Scroll right">
-        <!-- Original right arrow -->
         <svg
           class="carousel-arrow-icon"
           width="24"
@@ -101,6 +100,26 @@
     "name": "Collection carousel",
     "settings": [
       {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 40
+      },
+      {
         "type": "collection",
         "id": "product_collection",
         "label": "Product Collection"
@@ -109,13 +128,11 @@
         "type": "text",
         "id": "carousel_title",
         "label": "Carousel Title"
-      },
-      {
+      }, {
         "type": "text",
         "id": "carousel_subtitle",
         "label": "Carousel Subtitle"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "show_product_highlight",
         "label": "Show Product Highlight (Metafield)",
@@ -138,6 +155,11 @@
         "max": 1500,
         "step": 100,
         "default": 600
+      }, {
+        "type": "checkbox",
+        "id": "sequential_fade",
+        "label": "Enable Sequential Fade-in",
+        "default": true
       }
     ],
     "presets": [

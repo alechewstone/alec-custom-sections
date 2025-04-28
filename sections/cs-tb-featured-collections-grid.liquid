@@ -1,48 +1,63 @@
 {{ 'cs-tb-featured-collections-grid.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
 
 {% assign block_count = section.blocks.size %}
-<section class="featured-collections-grid {% if block_count == 2 %} two-blocks {% else %} three-blocks {% endif %}">
-  {% for block in section.blocks %}
-    <div class="
+<div class="featured-collections-grid-wrapper{% if section.settings.enable_mobile_carousel %} mobile-carousel js-carousel-section{% endif %}">
+
+  {% if section.settings.show_scroll_arrows %}
+    <div class="carousel-arrows">
+      <button class="carousel-arrow carousel-arrow--left" aria-label="Scroll left">
+        <svg
+          class="carousel-arrow-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
+          <polyline
+            points="16 4 8 12 16 20"
+            fill="none"
+            stroke="#606162"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <button class="carousel-arrow carousel-arrow--right" aria-label="Scroll right">
+        <svg
+          class="carousel-arrow-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
+          <polyline
+            points="16 4 8 12 16 20"
+            fill="none"
+            stroke="#606162"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  {% endif %}
+
+  <section
+    class="featured-collections-grid {% if block_count == 2 %} two-blocks {% else %} three-blocks {% endif %}"
+    style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px"
+    {% if section.settings.enable_mobile_carousel %}
+    data-carousel
+    {% endif %}>
+    {% for block in section.blocks %}
+      <div class="
     {% if block.settings.fill_block %} featured-collections-grid__card--fill-block {% else %} featured-collections-grid__card--frame {% endif %}" style="background-color: {{ block.settings.background_color }}">
-      {% assign collection = collections[block.settings.collection] %}
-        {% if block.settings.fill_block %}
+        {% assign collection = collections[block.settings.collection] %}
+          {% if block.settings.fill_block %}
 
-        <!-- Fill Block Layout -->
-        <a href="{{ collection.url }}">
-          {% if block.settings.custom_image != blank %}
-            <img
-              src="{{ block.settings.custom_image | image_url: width: 1920 }}"
-              width="500"
-              height="auto"
-              alt="{{ collection.title }}">
-          {% else %}
-            <img
-              src="{{ collection.featured_image | image_url: width: 1920 }}"
-              width="500"
-              height="auto"
-              alt="{{ collection.title }}">
-          {% endif %}
-        </a>
-
-        <div class="featured-collections-grid__card-content">
-          <h1 class="collection-title">
-            {% if block.settings.heading == blank %}
-              {{ collection.title }}
-            {% else %}
-              {{ block.settings.heading }}
-            {% endif %}
-          </h1>
-          <a href="{{ block.settings.button_link }}" class="button button--hover-{{ section.settings.button_hover_style }}">
-            {{ block.settings.button_text }}
-          </a>
-        </div>
-
-      {% else %}
-
-        <!-- Standard Layout -->
-        <div class="block-collection-card">
-          <a href="{{ collection.url }}" class="block-collection-card__link">
+          <!-- Fill Block Layout -->
+          <a href="{{ collection.url }}">
             {% if block.settings.custom_image != blank %}
               <img
                 src="{{ block.settings.custom_image | image_url: width: 1920 }}"
@@ -56,42 +71,88 @@
                 height="auto"
                 alt="{{ collection.title }}">
             {% endif %}
+          </a>
+
+          <div class="featured-collections-grid__card-content">
             <h1 class="collection-title">
-              {% if block.settings.collection_heading == blank %}
+              {% if block.settings.heading == blank %}
                 {{ collection.title }}
               {% else %}
-                {{ block.settings.collection_heading }}
+                {{ block.settings.heading }}
               {% endif %}
             </h1>
-          </a>
-        </div>
-
-        {% if block.settings.show_card_content == true %}
-          <div class="featured-collections-grid__card-content ">
-            <h2 class="block-heading">
-              {{ block.settings.block_heading }}
-            </h2>
-            <p class="block-description">
-              {% if block.settings.description == blank %}
-                {{ collection.description }}
-              {% else %}
-                {{ block.settings.description }}
-              {% endif %}
-            </p>
             <a href="{{ block.settings.button_link }}" class="button button--hover-{{ section.settings.button_hover_style }}">
               {{ block.settings.button_text }}
             </a>
           </div>
+
+        {% else %}
+
+          <!-- Standard Layout -->
+          <div class="block-collection-card">
+            <a href="{{ collection.url }}" class="block-collection-card__link">
+              {% if block.settings.custom_image != blank %}
+                <img
+                  src="{{ block.settings.custom_image | image_url: width: 1920 }}"
+                  width="500"
+                  height="auto"
+                  alt="{{ collection.title }}">
+              {% else %}
+                <img
+                  src="{{ collection.featured_image | image_url: width: 1920 }}"
+                  width="500"
+                  height="auto"
+                  alt="{{ collection.title }}">
+              {% endif %}
+              <h1 class="collection-title">
+                {% if block.settings.collection_heading == blank %}
+                  {{ collection.title }}
+                {% else %}
+                  {{ block.settings.collection_heading }}
+                {% endif %}
+              </h1>
+            </a>
+          </div>
+
+          {% if block.settings.show_card_content == true %}
+            <div class="featured-collections-grid__card-content ">
+              <h2 class="block-heading">
+                {{ block.settings.block_heading }}
+              </h2>
+              <p class="block-description">
+                {% if block.settings.description == blank %}
+                  {{ collection.description }}
+                {% else %}
+                  {{ block.settings.description }}
+                {% endif %}
+              </p>
+              <a href="{{ block.settings.button_link }}" class="button button--hover-{{ section.settings.button_hover_style }}">
+                {{ block.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
         {% endif %}
-      {% endif %}
-    </div>
-  {% endfor %}
-</section>
+      </div>
+    {% endfor %}
+  </section>
+</div>
 
 {% schema %}
   {
     "name": "Featured collections grid",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_mobile_carousel",
+        "label": "Enable Carousel on Mobile",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_scroll_arrows",
+        "label": "Show Scroll Arrows (NOTE: only use when Mobile Carousel is enabled)",
+        "default": false
+      },
       {
         "type": "select",
         "id": "button_hover_style",
@@ -106,6 +167,25 @@
           }
         ],
         "default": "fade-swipe"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 40
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 40
       }
     ],
     "blocks": [

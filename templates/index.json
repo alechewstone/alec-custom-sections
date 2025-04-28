@@ -48,6 +48,7 @@
             "collection": "womens",
             "custom_image": "shopify://shop_images/bak249306_c15midblue_v15_11.webp",
             "fill_block": false,
+            "show_card_content": true,
             "collection_heading": "WOMEN'S",
             "block_heading": "20% off new in styles",
             "description": "put a spring in your step with 20% off all new season styles.",
@@ -62,6 +63,7 @@
             "collection": "men",
             "custom_image": "shopify://shop_images/Ted-Blog-Entry-768x768.jpg",
             "fill_block": false,
+            "show_card_content": true,
             "collection_heading": "men's",
             "block_heading": "20% off new in styles",
             "description": "put a spring in your step with 20% off all new season styles.",
@@ -76,7 +78,11 @@
       ],
       "name": "2 Column Grid (Frame)",
       "settings": {
-        "button_hover_style": "rotating-swipe"
+        "enable_mobile_carousel": false,
+        "show_scroll_arrows": false,
+        "button_hover_style": "rotating-swipe",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "cs_tb_featured_collections_grid_Hdhrrt": {
@@ -88,6 +94,7 @@
             "background_color": "#ffffff",
             "collection": "womens",
             "fill_block": true,
+            "show_card_content": true,
             "collection_heading": "Collection Heading",
             "block_heading": "Block Heading",
             "description": "Block description",
@@ -101,6 +108,7 @@
             "background_color": "#ffffff",
             "collection": "men",
             "fill_block": true,
+            "show_card_content": true,
             "collection_heading": "Collection Heading",
             "block_heading": "Block Heading",
             "description": "Block description",
@@ -115,7 +123,11 @@
       ],
       "name": "2 Column Grid (Fill)",
       "settings": {
-        "button_hover_style": "fade-swipe"
+        "enable_mobile_carousel": false,
+        "show_scroll_arrows": false,
+        "button_hover_style": "fade-swipe",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "cs_tb_featured_collections_grid_9MrQ7Q": {
@@ -127,6 +139,7 @@
             "background_color": "#ffffff",
             "collection": "womens",
             "fill_block": true,
+            "show_card_content": true,
             "collection_heading": "Collection Heading",
             "block_heading": "Block Heading",
             "description": "Block description",
@@ -140,6 +153,7 @@
             "background_color": "#ffffff",
             "collection": "men",
             "fill_block": true,
+            "show_card_content": true,
             "collection_heading": "Collection Heading",
             "block_heading": "Block Heading",
             "description": "Block description",
@@ -153,6 +167,7 @@
             "background_color": "#ffffff",
             "collection": "kids",
             "fill_block": true,
+            "show_card_content": true,
             "collection_heading": "Collection Heading",
             "block_heading": "Block Heading",
             "description": "Block description",
@@ -168,7 +183,11 @@
       ],
       "name": "3 Column Grid (Fill)",
       "settings": {
-        "button_hover_style": "fade-swipe"
+        "enable_mobile_carousel": true,
+        "show_scroll_arrows": true,
+        "button_hover_style": "fade-swipe",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "cs_tb_accordion_FWxeKR": {
@@ -206,20 +225,25 @@
         "accordion_header": "Help & FAQs",
         "separation_line": true,
         "enable_scroll_animation": true,
-        "animation_speed": 500
+        "animation_speed": 500,
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "cs_tb_carousel_kJmFKL": {
       "type": "cs-tb-carousel",
       "name": "Collection carousel",
       "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
         "product_collection": "mens-accessories",
         "carousel_title": "Men's accessories.",
         "carousel_subtitle": "For style and individuality.",
         "show_product_highlight": true,
         "show_scroll_arrows": true,
         "enable_scroll_animation": true,
-        "animation_speed": 500
+        "animation_speed": 1500,
+        "sequential_fade": true
       }
     }
   },

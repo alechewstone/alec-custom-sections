@@ -272,9 +272,8 @@ animation: rotatingSwipe 0.6s ease forwards;
 .featured-collections-grid.two-blocks  {
     grid-template-columns: repeat(2, 1fr);
 }
-  
-.featured-collections-grid.two-blocks .featured-collections-grid__card--frame,
-.featured-collections-grid.two-blocks .featured-collections-grid__card--fill-block img {
+
+.featured-collections-grid.two-blocks .featured-collections-grid__card--fill-block {
     aspect-ratio: 1.17;
 }
 
@@ -283,21 +282,130 @@ animation: rotatingSwipe 0.6s ease forwards;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.featured-collections-grid.three-blocks .featured-collections-grid__card--frame,
-.featured-collections-grid.three-blocks .featured-collections-grid__card--fill-block img {
+/* Mobile layout - no carousel one column */
+@media screen and (max-width: 899px) {
+    .featured-collections-grid.two-blocks,
+    .featured-collections-grid.three-blocks  {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Mobile layout - carousel */
+@media screen and (max-width: 899px) {
+    .mobile-carousel .featured-collections-grid.two-blocks,
+    .mobile-carousel .featured-collections-grid.three-blocks {
+        grid-template-columns: none;
+    }
+
+    .mobile-carousel {
+        position: relative;
+    }
+
+    .mobile-carousel .featured-collections-grid {
+        display: flex;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: #b0b0b0 #e0e0e0;
+    }
+
+    .mobile-carousel .featured-collections-grid > * {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        width: 100%;
+    }
+
+    .mobile-carousel .featured-collections-grid::-webkit-scrollbar {
+        height: 8px; 
+    }
+
+
+    .mobile-carousel .featured-collections-grid::-webkit-scrollbar-track {
+        background: #e0e0e0; 
+    }
+
+    .mobile-carousel .featured-collections-grid::-webkit-scrollbar-thumb {
+        background: #b0b0b0; 
+        border-radius: 2px;
+    }
+
+    .mobile-carousel .carousel-arrows {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        pointer-events: none;
+        transform: translateY(-50%);
+        padding: 0 2rem;
+        z-index: 2;
+        opacity: 0.6; /* Always visible */
+    }
+    
+    .mobile-carousel .carousel-arrow {
+        width: 5rem;
+        height: 5rem;
+        background: rgba(255, 255, 255, 0.7);
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 3;
+        pointer-events: auto;
+        transition: opacity 0.4s ease;
+    }
+
+    .mobile-carousel .carousel-arrow:focus {
+        outline: none;
+    }
+    
+    .mobile-carousel .carousel-arrow--left {
+        position: absolute;
+        left: 2rem;
+    }
+    
+    .mobile-carousel .carousel-arrow--right {
+        position: absolute;
+        right: 2rem;
+    }
+    
+    .mobile-carousel .carousel-arrow--right svg {
+        transform: rotate(180deg);
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .mobile-carousel .carousel-arrows {
+        display: none;
+    }
+}
+
+.featured-collections-grid.three-blocks .featured-collections-grid__card--fill-block {
     aspect-ratio: 1.19;
 }
 
 /* Fill block */
 .featured-collections-grid__card--fill-block {
     position: relative;
+    width: 100%;
+    height: auto;
 }
 
 .featured-collections-grid__card--fill-block img {
-    width: 100%;
     object-fit: cover;
     object-position: 50% 5%;
     display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .featured-collections-grid__card--fill-block,
@@ -325,6 +433,11 @@ animation: rotatingSwipe 0.6s ease forwards;
 /* Frame block */
 .featured-collections-grid__card--frame {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    aspect-ratio: 1.17;
 }
 
 .block-collection-card {
@@ -333,6 +446,8 @@ animation: rotatingSwipe 0.6s ease forwards;
     flex-direction: column;
     align-items: center;
     margin-top: 6rem;
+    padding-inline: 9rem;
+    width: 100%;
 }
 
 .block-collection-card__link {
@@ -342,6 +457,7 @@ animation: rotatingSwipe 0.6s ease forwards;
 
 
 .featured-collections-grid__card--frame img {
+    width: 100%;
     aspect-ratio: 1.4;
     object-fit: cover;
     object-position: 50% 5%;
@@ -356,7 +472,7 @@ animation: rotatingSwipe 0.6s ease forwards;
     right: 0;
     color: var(--white);
     letter-spacing: 1rem;
-    font-size: var(--tb-font-size-hero);
+    font-size: clamp(2rem, 3.5vw, var(--tb-font-size-hero));
     font-weight: var(--tb-font-weight-button);
     text-decoration: underline;
     text-decoration-thickness: 3px;
@@ -374,5 +490,14 @@ animation: rotatingSwipe 0.6s ease forwards;
     padding: var(--tb-padding);
     align-items: center;
     text-align: center;
+    margin-top: 2rem;
     gap: 1rem;
+    width: 100%;
+}
+
+@media screen and (max-width: 899px) {
+    .block-collection-card__link .collection-title,
+    .block-collection-card__link .collection-title h1 {
+        font-size: clamp(2rem, 6vw, var(--tb-font-size-hero));
+    }
 }
