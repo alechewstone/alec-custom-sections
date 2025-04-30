@@ -2,6 +2,13 @@
 {{ 'cs-tb-featured-collections-grid.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
 
+<style>
+  :root {
+    --featured-collection-section-padding-top: {{ section.settings.padding_top }}px;
+    --featured-collection-section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
 {% assign block_count = section.blocks.size %}
 <div class="featured-collections-grid__wrapper{% if section.settings.enable_mobile_carousel %} mobile-carousel js-carousel-section{% endif %}">
 
@@ -19,8 +26,6 @@
 
   <section
     class="featured-collections-grid
-      padding-top-{{ section.settings.padding_top }}
-      padding-bottom-{{ section.settings.padding_bottom }}
       {% if block_count == 2 %} two-blocks {% else %} three-blocks {% endif %}"
     {% if section.settings.enable_mobile_carousel %}
     data-carousel
@@ -33,19 +38,8 @@
 
           <!-- Fill Block Layout -->
           <a href="{{ collection.url }}">
-            {% if block.settings.custom_image != blank %}
-              <img
-                src="{{ block.settings.custom_image | image_url: width: 1920 }}"
-                width="500"
-                height="auto"
-                alt="{{ collection.title }}">
-            {% else %}
-              <img
-                src="{{ collection.featured_image | image_url: width: 1920 }}"
-                width="500"
-                height="auto"
-                alt="{{ collection.title }}">
-            {% endif %}
+            {% assign custom_image = block.settings.custom_image | default: collection.featured_image %}
+            {{ custom_image | image_url: width: 1920 | image_tag: srcset: '360w: 360, 540w: 540, 720w: 720, 900w: 900', sizes: '(max-width: 768px) 80vw, 33vw', alt: product.title, loading: 'lazy' }}
           </a>
 
           <div class="featured-collections-grid__card-content">
@@ -63,22 +57,12 @@
 
         {% else %}
 
-          <!-- Standard Layout -->
+          <!-- Frame Layout -->
           <div class="featured-collections-grid__collection-card">
             <a href="{{ collection.url }}" class="featured-collections-grid__collection-card-link">
-              {% if block.settings.custom_image != blank %}
-                <img
-                  src="{{ block.settings.custom_image | image_url: width: 1920 }}"
-                  width="500"
-                  height="auto"
-                  alt="{{ collection.title }}">
-              {% else %}
-                <img
-                  src="{{ collection.featured_image | image_url: width: 1920 }}"
-                  width="500"
-                  height="auto"
-                  alt="{{ collection.title }}">
-              {% endif %}
+              {% assign custom_image = block.settings.custom_image | default: collection.featured_image %}
+              {{ custom_image | image_url: width: 1920 | image_tag: srcset: '360w: 360, 540w: 540, 720w: 720, 900w: 900', sizes: '(max-width: 768px) 80vw, 33vw', alt: product.title, loading: 'lazy' }}
+
               <h1 class="featured-collections-grid__collection-title">
                 {% if block.settings.collection_heading == blank %}
                   {{ collection.title }}
@@ -148,7 +132,7 @@
         "id": "padding_top",
         "label": "Padding Top",
         "min": 0,
-        "max": 100,
+        "max": 200,
         "step": 20,
         "unit": "px",
         "default": 40
@@ -157,7 +141,7 @@
         "id": "padding_bottom",
         "label": "Padding Bottom",
         "min": 0,
-        "max": 100,
+        "max": 200,
         "step": 20,
         "unit": "px",
         "default": 40

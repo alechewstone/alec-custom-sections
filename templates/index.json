@@ -81,8 +81,8 @@
         "enable_mobile_carousel": false,
         "show_scroll_arrows": false,
         "button_hover_style": "rotating-swipe",
-        "padding_top": 40,
-        "padding_bottom": 100
+        "padding_top": 0,
+        "padding_bottom": 40
       }
     },
     "cs_tb_featured_collections_grid_Hdhrrt": {
@@ -126,7 +126,7 @@
         "enable_mobile_carousel": false,
         "show_scroll_arrows": false,
         "button_hover_style": "fade-swipe",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 40
       }
     },
@@ -186,7 +186,7 @@
         "enable_mobile_carousel": true,
         "show_scroll_arrows": true,
         "button_hover_style": "fade-swipe",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 40
       }
     },
@@ -226,7 +226,7 @@
         "separation_line": true,
         "enable_scroll_animation": true,
         "animation_speed": 500,
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 40
       }
     },
@@ -234,7 +234,7 @@
       "type": "cs-tb-carousel",
       "name": "Collection carousel",
       "settings": {
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 40,
         "product_collection": "mens-accessories",
         "carousel_title": "Men's accessories.",
@@ -242,7 +242,7 @@
         "show_product_highlight": true,
         "show_scroll_arrows": true,
         "enable_scroll_animation": true,
-        "animation_speed": 1500,
+        "animation_speed": 600,
         "sequential_fade": true
       }
     }

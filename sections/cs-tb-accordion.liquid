@@ -2,10 +2,15 @@
 {{ 'cs-tb-accordion.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cs-tb-accordion.js' | asset_url }}" defer="defer"></script>
 
+<style>
+  :root {
+    --accordion-section-padding-top: {{ section.settings.padding_top }}px;
+    --accordion-section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
 <section
   class="accordion-section
-    padding-top-{{ section.settings.padding_top }}
-    padding-bottom-{{ section.settings.padding_bottom }}
     {% if section.settings.enable_scroll_animation %} scroll-animate-enabled scroll-fade-in{% endif %}"
   {% if section.settings.enable_scroll_animation %}
   data-animation-speed="{{ section.settings.animation_speed }}"
@@ -26,34 +31,7 @@
             aria-controls="accordion-section__content-{{ block.id }}">
             <h2>{{ block.settings.item_title }}</h2>
 
-            <svg
-              class="accordion-section__icon"
-              width="11"
-              height="11"
-              viewBox="0 0 11 11"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true">
-              <g>
-                  <!-- Horizontal line -->
-                <rect
-                  class="accordion-section__icon-line--horizontal"
-                  x="1"
-                  y="5"
-                  width="9"
-                  height="1"
-                  fill="#212121" />
-                  <!-- Vertical line -->
-                <rect
-                  class="accordion-section__icon-line--vertical"
-                  x="5"
-                  y="1"
-                  width="1"
-                  height="9"
-                  fill="#212121" />
-              </g>
-            </svg>
-
-
+            {% render 'accordion-section-icon' %}
           </button>
         </div>
 
@@ -102,7 +80,7 @@
         "id": "padding_top",
         "label": "Padding Top",
         "min": 0,
-        "max": 100,
+        "max": 200,
         "step": 20,
         "unit": "px",
         "default": 40
@@ -111,7 +89,7 @@
         "id": "padding_bottom",
         "label": "Padding Bottom",
         "min": 0,
-        "max": 100,
+        "max": 200,
         "step": 20,
         "unit": "px",
         "default": 40
