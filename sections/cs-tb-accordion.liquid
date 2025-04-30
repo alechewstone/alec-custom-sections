@@ -1,30 +1,33 @@
+{{ 'cs-reset.css' | asset_url | stylesheet_tag }}
 {{ 'cs-tb-accordion.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cs-tb-accordion.js' | asset_url }}" defer="defer"></script>
 
 <section
-  class="accordion-section{% if section.settings.enable_scroll_animation %} scroll-animate-enabled scroll-fade-in{% endif %}"
-  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px"
+  class="accordion-section
+    padding-top-{{ section.settings.padding_top }}
+    padding-bottom-{{ section.settings.padding_bottom }}
+    {% if section.settings.enable_scroll_animation %} scroll-animate-enabled scroll-fade-in{% endif %}"
   {% if section.settings.enable_scroll_animation %}
   data-animation-speed="{{ section.settings.animation_speed }}"
   {% endif %}>
-  <div class="accordion-section-upper">
+  <div class="accordion-section__upper">
     {% if section.settings.accordion_header != blank %}
-      <h1 class="accordion-header">{{ section.settings.accordion_header }}</h1>
+      <h1 class="accordion-section__header">{{ section.settings.accordion_header }}</h1>
     {% endif %}
   </div>
 
-  <div class="accordion-section-inner">
+  <div class="accordion-section__inner">
     {% for block in section.blocks %}
-      <div class="accordion-item scroll-fade-in {% if section.settings.separation_line == true %}with-separator{% endif %}" style="transition-delay: {{ forloop.index0 | times: section.settings.animation_speed | divided_by: 4 }}ms;">
-        <div class="accordion-item-head">
+      <div class="accordion-section__item scroll-fade-in {% if section.settings.separation_line == true %}accordion-section__item--with-separator{% endif %}" style="transition-delay: {{ forloop.index0 | times: section.settings.animation_speed | divided_by: 4 }}ms;">
+        <div class="accordion-section__item-header">
           <button
-            class="accordion-toggle"
+            class="accordion-section__toggle"
             aria-expanded="false"
-            aria-controls="accordion-content-{{ block.id }}">
+            aria-controls="accordion-section__content-{{ block.id }}">
             <h2>{{ block.settings.item_title }}</h2>
 
             <svg
-              class="icon-tb-toggle"
+              class="accordion-section__icon"
               width="11"
               height="11"
               viewBox="0 0 11 11"
@@ -33,7 +36,7 @@
               <g>
                   <!-- Horizontal line -->
                 <rect
-                  class="line-horizontal"
+                  class="accordion-section__icon-line--horizontal"
                   x="1"
                   y="5"
                   width="9"
@@ -41,7 +44,7 @@
                   fill="#212121" />
                   <!-- Vertical line -->
                 <rect
-                  class="line-vertical"
+                  class="accordion-section__icon-line--vertical"
                   x="5"
                   y="1"
                   width="1"
@@ -55,15 +58,14 @@
         </div>
 
         <div
-          id="accordion-content-{{ block.id }}"
-          class="accordion-content"
+          id="accordion-section__content-{{ block.id }}"
+          class="accordion-section__content"
           hidden>
-          <p class="accordion-item-text">{{ block.settings.item_text }}</p>
+          <p class="accordion-section__item-text">{{ block.settings.item_text }}</p>
         </div>
       </div>
     {% endfor %}
   </div>
-
 </section>
 
 {% schema %}
@@ -101,7 +103,7 @@
         "label": "Padding Top",
         "min": 0,
         "max": 100,
-        "step": 4,
+        "step": 20,
         "unit": "px",
         "default": 40
       }, {
@@ -110,7 +112,7 @@
         "label": "Padding Bottom",
         "min": 0,
         "max": 100,
-        "step": 4,
+        "step": 20,
         "unit": "px",
         "default": 40
       }

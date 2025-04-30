@@ -1,5 +1,5 @@
 // Accordion Toggle Logic
-document.querySelectorAll('.accordion-toggle').forEach(button => {
+document.querySelectorAll('.accordion-section__toggle').forEach(button => {
   button.addEventListener('click', () => {
     const expanded = button.getAttribute('aria-expanded') === 'true';
     const content = document.getElementById(button.getAttribute('aria-controls'));
@@ -12,7 +12,7 @@ document.querySelectorAll('.accordion-toggle').forEach(button => {
 
     if (!expanded) {
       content.style.transition = `max-height ${duration}s cubic-bezier(0.2, 0, 0, 1), opacity ${duration}s ease-out`;
-      content.classList.add('open');
+      content.classList.add('accordion-section__content--open');
       content.style.maxHeight = contentHeight + 'px';
       content.style.opacity = '1';
     } else {
@@ -21,7 +21,7 @@ document.querySelectorAll('.accordion-toggle').forEach(button => {
       content.style.transition = `max-height ${closeDuration}s cubic-bezier(0.4, 0, 1, 1), opacity ${closeDuration}s ease-in`;
       content.style.maxHeight = '0';
       content.style.opacity = '0';
-      content.classList.remove('open');
+      content.classList.remove('accordion-section__content--open');
     }
 
     button.setAttribute('aria-expanded', !expanded);

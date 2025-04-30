@@ -1,52 +1,27 @@
+{{ 'cs-reset.css' | asset_url | stylesheet_tag }}
 {{ 'cs-tb-featured-collections-grid.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
 
 {% assign block_count = section.blocks.size %}
-<div class="featured-collections-grid-wrapper{% if section.settings.enable_mobile_carousel %} mobile-carousel js-carousel-section{% endif %}">
+<div class="featured-collections-grid__wrapper{% if section.settings.enable_mobile_carousel %} mobile-carousel js-carousel-section{% endif %}">
 
   {% if section.settings.show_scroll_arrows %}
     <div class="carousel-arrows">
       <button class="carousel-arrow carousel-arrow--left" aria-label="Scroll left">
-        <svg
-          class="carousel-arrow-icon"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
-          <polyline
-            points="16 4 8 12 16 20"
-            fill="none"
-            stroke="#606162"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
+        {% render 'icon-arrow' %}
       </button>
 
       <button class="carousel-arrow carousel-arrow--right" aria-label="Scroll right">
-        <svg
-          class="carousel-arrow-icon"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
-          <polyline
-            points="16 4 8 12 16 20"
-            fill="none"
-            stroke="#606162"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
+        {% render 'icon-arrow' %}
       </button>
     </div>
   {% endif %}
 
   <section
-    class="featured-collections-grid {% if block_count == 2 %} two-blocks {% else %} three-blocks {% endif %}"
-    style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px"
+    class="featured-collections-grid
+      padding-top-{{ section.settings.padding_top }}
+      padding-bottom-{{ section.settings.padding_bottom }}
+      {% if block_count == 2 %} two-blocks {% else %} three-blocks {% endif %}"
     {% if section.settings.enable_mobile_carousel %}
     data-carousel
     {% endif %}>
@@ -74,7 +49,7 @@
           </a>
 
           <div class="featured-collections-grid__card-content">
-            <h1 class="collection-title">
+            <h1 class="featured-collections-grid__collection-title">
               {% if block.settings.heading == blank %}
                 {{ collection.title }}
               {% else %}
@@ -89,8 +64,8 @@
         {% else %}
 
           <!-- Standard Layout -->
-          <div class="block-collection-card">
-            <a href="{{ collection.url }}" class="block-collection-card__link">
+          <div class="featured-collections-grid__collection-card">
+            <a href="{{ collection.url }}" class="featured-collections-grid__collection-card-link">
               {% if block.settings.custom_image != blank %}
                 <img
                   src="{{ block.settings.custom_image | image_url: width: 1920 }}"
@@ -104,7 +79,7 @@
                   height="auto"
                   alt="{{ collection.title }}">
               {% endif %}
-              <h1 class="collection-title">
+              <h1 class="featured-collections-grid__collection-title">
                 {% if block.settings.collection_heading == blank %}
                   {{ collection.title }}
                 {% else %}
@@ -116,10 +91,10 @@
 
           {% if block.settings.show_card_content == true %}
             <div class="featured-collections-grid__card-content ">
-              <h2 class="block-heading">
+              <h2 class="featured-collections-grid__collection-card-heading">
                 {{ block.settings.block_heading }}
               </h2>
-              <p class="block-description">
+              <p class="featured-collections-grid__collection-card-description">
                 {% if block.settings.description == blank %}
                   {{ collection.description }}
                 {% else %}
@@ -174,7 +149,7 @@
         "label": "Padding Top",
         "min": 0,
         "max": 100,
-        "step": 4,
+        "step": 20,
         "unit": "px",
         "default": 40
       }, {
@@ -183,7 +158,7 @@
         "label": "Padding Bottom",
         "min": 0,
         "max": 100,
-        "step": 4,
+        "step": 20,
         "unit": "px",
         "default": 40
       }

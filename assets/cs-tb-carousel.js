@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
 initCarousel('.mobile-carousel', '[data-carousel]', '.mobile-carousel .carousel-arrow--left', '.mobile-carousel .carousel-arrow--right', 400);
 
 // Collection Carousel
-initCarousel('.carousel-section', '.carousel-track', '.carousel-section .carousel-arrow--left', '.carousel-section .carousel-arrow--right', 400);
+initCarousel('.carousel-section', '.carousel-section__track', '.carousel-section .carousel-arrow--left', '.carousel-section .carousel-arrow--right', 400);
 
 // Scroll Fade-ins
   initScrollFadeIn('.carousel-section'); // Applies to each carousel-section with scroll-fade-in items

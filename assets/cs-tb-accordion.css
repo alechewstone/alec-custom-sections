@@ -24,75 +24,6 @@
     font-display: swap;
 }
 
-/* RESET STYLES */
-.accordion-section,
-.accordion-section * {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
-  box-sizing: border-box;
-  letter-spacing: 0;
-}
-
-.accordion-section article,
-.accordion-section aside,
-.accordion-section details,
-.accordion-section figcaption,
-.accordion-section figure,
-.accordion-section footer,
-.accordion-section header,
-.accordion-section hgroup,
-.accordion-section menu,
-.accordion-section nav,
-.accordion-section section {
-  display: block;
-}
-
-.accordion-section ol,
-.accordion-section ul {
-  list-style: none;
-}
-
-.accordion-section blockquote,
-.accordion-section q {
-  quotes: none;
-}
-
-.accordion-section blockquote::before,
-.accordion-section blockquote::after,
-.accordion-section q::before,
-.accordion-section q::after {
-  content: '';
-  content: none;
-}
-
-.accordion-section table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.accordion-section img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.accordion-section button,
-.accordion-section .button,
-.accordion-section [type="button"],
-.accordion-section [type="submit"],
-.accordion-section a.button {
-  display: inline-block;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-  text-decoration: none;
-  position: relative;
-  transition: all 0.5s ease;
-}
-
 /* BASE STYLES */
 .accordion-section,
 .accordion-section a {
@@ -178,7 +109,7 @@
 }  
 
 /* SECTION STYLES */
-.accordion-section-upper {
+.accordion-section__upper {
     padding-left: 34rem;
     padding-right: 34rem;
     padding-top: 3.2rem;
@@ -187,17 +118,17 @@
   }
   
   @media (max-width: 1200px) {
-    .accordion-section-upper {
+    .accordion-section__upper {
       padding-left: 12rem;
       padding-right: 12rem;
     }
   }
 
-.accordion-header {
+.accordion-section__header {
     margin-block: 2rem;
 }
 
-.accordion-section-inner {
+.accordion-section__inner {
     box-sizing: border-box; /* Just to be sure */
     max-width: 880px;
     margin: 0 auto;
@@ -208,7 +139,7 @@
   }
   
   @media (max-width: 1200px) {
-    .accordion-section-inner {
+    .accordion-section__inner {
       max-width: 912px;
       margin: 0 auto;
       padding-left: 1.6rem;
@@ -216,44 +147,44 @@
     }
   }
 
-.accordion-item {
+.accordion-section__item {
     border-bottom: 1px solid var(--tb-color-border-dark);
     margin-bottom: 1.6rem;
 }
 
-.accordion-item-head {
+.accordion-section__item-header {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
 
-.accordion-item-head .accordion-toggle {
+.accordion-section__item-header .accordion-section__toggle {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.accordion-toggle svg {
+.accordion-section__toggle svg {
     height: 2rem;
     width: 2rem;
 }
 
-.icon-tb-toggle .line-vertical {
+.accordion-section__icon .accordion-section__icon-line--vertical {
     transition: transform 0.2s ease, opacity 0.2s ease;
     transform-origin: center;
 }
   
-.accordion-toggle[aria-expanded="true"] .line-vertical {
+.accordion-section__toggle[aria-expanded="true"] .accordion-section__icon-line--vertical {
     transform: scaleY(0);
     opacity: 0;
 }
   
-.accordion-toggle[aria-expanded="false"] .line-vertical {
+.accordion-section__toggle[aria-expanded="false"] .accordion-section__icon-line--vertical {
     transform: scaleY(1);
     opacity: 1;
 }  
 
-.accordion-content {
+.accordion-section__content {
     display: flex;
     flex-direction: column;
     padding-bottom: 1.6rem;
@@ -263,11 +194,11 @@
     transition: max-height 0.3s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s ease;
 }
 
-.accordion-content.open {
+.accordion-section__content--open {
     opacity: 1;
 }
 
-.accordion-content p {
+.accordion-section__content p {
     margin-top: 1.6rem;
     margin-bottom: 1.6rem;
     padding-inline: 1.2rem;
