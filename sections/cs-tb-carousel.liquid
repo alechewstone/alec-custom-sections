@@ -3,14 +3,15 @@
 <script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
 
 <style>
-  :root {
-    --carousel-section-padding-top: {{ section.settings.padding_top }}px;
-    --carousel-section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  .carousel-section--{{ section.id }} {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 </style>
 
 <section
   class="carousel-section
+  carousel-section--{{ section.id }}
     {% if section.settings.enable_scroll_animation %} scroll-animate-enabled{% endif %}{% if section.settings.sequential_fade %} sequential-fade{% endif %}"
   {% if section.settings.enable_scroll_animation %}
   data-animation-speed="{{ section.settings.animation_speed }}"

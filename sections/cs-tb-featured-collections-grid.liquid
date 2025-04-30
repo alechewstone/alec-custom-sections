@@ -3,9 +3,9 @@
 <script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
 
 <style>
-  :root {
-    --featured-collection-section-padding-top: {{ section.settings.padding_top }}px;
-    --featured-collection-section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  .featured-collections-grid--{{ section.id }} {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 </style>
 
@@ -26,6 +26,7 @@
 
   <section
     class="featured-collections-grid
+    featured-collections-grid--{{ section.id }}
       {% if block_count == 2 %} two-blocks {% else %} three-blocks {% endif %}"
     {% if section.settings.enable_mobile_carousel %}
     data-carousel

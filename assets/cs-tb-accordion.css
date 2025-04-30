@@ -110,8 +110,8 @@
 
 /* SECTION STYLES */
 .accordion-section {
-    padding-top: var(--accordion-section-padding-top);
-    padding-bottom: var(--accordion-section-padding-bottom);
+    padding-top: var(--padding-top);
+    padding-bottom: var(--padding-bottom);
 }
 
 .accordion-section__upper {

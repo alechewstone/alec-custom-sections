@@ -82,7 +82,7 @@
         "show_scroll_arrows": false,
         "button_hover_style": "rotating-swipe",
         "padding_top": 0,
-        "padding_bottom": 40
+        "padding_bottom": 100
       }
     },
     "cs_tb_featured_collections_grid_Hdhrrt": {
@@ -127,7 +127,7 @@
         "show_scroll_arrows": false,
         "button_hover_style": "fade-swipe",
         "padding_top": 0,
-        "padding_bottom": 40
+        "padding_bottom": 100
       }
     },
     "cs_tb_featured_collections_grid_9MrQ7Q": {
@@ -187,7 +187,7 @@
         "show_scroll_arrows": true,
         "button_hover_style": "fade-swipe",
         "padding_top": 0,
-        "padding_bottom": 40
+        "padding_bottom": 0
       }
     },
     "cs_tb_accordion_FWxeKR": {
@@ -237,6 +237,7 @@
         "padding_top": 0,
         "padding_bottom": 40,
         "product_collection": "mens-accessories",
+        "product_limit": 10,
         "carousel_title": "Men's accessories.",
         "carousel_subtitle": "For style and individuality.",
         "show_product_highlight": true,

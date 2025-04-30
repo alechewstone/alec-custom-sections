@@ -104,8 +104,8 @@
 .carousel-section {
     position: relative;
     padding: 5rem 0;
-    padding-top: var(--carousel-section-padding-top);
-    padding-bottom: var(--carousel-section-padding-bottom);
+    padding-top: var(--padding-top);
+    padding-bottom: var(--padding-bottom);
 }
 
 .carousel-section__header {
