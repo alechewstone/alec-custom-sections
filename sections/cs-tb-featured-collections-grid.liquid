@@ -10,7 +10,7 @@
 </style>
 
 {% assign block_count = section.blocks.size %}
-<div class="featured-collections-grid__wrapper{% if section.settings.enable_mobile_carousel %} mobile-carousel js-carousel-section{% endif %}">
+<div class="featured-collections-grid__wrapper section-max-width{% if section.settings.enable_mobile_carousel %} mobile-carousel js-carousel-section{% endif %}">
 
   {% if section.settings.show_scroll_arrows %}
     <div class="carousel-arrows">

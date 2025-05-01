@@ -12,6 +12,7 @@
 <section
   class="carousel-section
   carousel-section--{{ section.id }}
+  section-max-width
     {% if section.settings.enable_scroll_animation %} scroll-animate-enabled{% endif %}{% if section.settings.sequential_fade %} sequential-fade{% endif %}"
   {% if section.settings.enable_scroll_animation %}
   data-animation-speed="{{ section.settings.animation_speed }}"

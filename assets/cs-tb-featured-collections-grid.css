@@ -77,6 +77,23 @@
     line-height: 120%;
 }
 
+.section-max-width {
+    max-width: 1600px;
+    width: 100%;
+    margin-inline: auto;
+}
+  
+@media (max-width: 1440px) {
+    .section-max-width {
+      max-width: 1280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-max-width {
+      max-width: 100%;
+    }
+}
 
 /* SECTION STYLES */
 .featured-collections-grid {
