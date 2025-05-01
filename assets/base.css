@@ -6,7 +6,57 @@
   --focused-base-outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   --focused-base-outline-offset: 0.3rem;
   --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  --white: #FFFFFF;
+
+  /* TED BAKER BASE STYLES */
+
+  /* Typography */
+  --tb-font-heading: 'Futura Md BT', sans-serif;
+  --tb-font-body: 'Futura Bk BT', sans-serif;
+  --tb-font-button: 'Futura Md BT', sans-serif;
+
+  --tb-font-weight-heavy: 500;
+  --tb-font-weight-body: 400;
+  --tb-font-weight-light: 300;
+  --tb-font-weight-button: 300;
+
+  --tb-font-size-hero: 52px;
+  --tb-font-size-h1: 33px;
+  --tb-font-size-h2: 22px;
+  --tb-font-size-h3: 16px;
+  --tb-font-size-h4: 24px;
+  --tb-font-size-big: 18px;
+  --tb-font-size-body: 16px;
+  --tb-font-size-small: 14px;
+  --tb-font-button-size-small: 12px;
+  --tb-font-button-size-medium: 14px;
+
+  --tb-font-size-hero-mobile: 30px;
+  --tb-font-size-h1-mobile: 32px;
+  --tb-font-size-h2-mobile: 19px;
+  --tb-font-size-h3-mobile: 18.72px;
+  --tb-font-size-body-mobile: 14px;
+  --tb-font-size-small-mobile: 12px;
+
+  --tb-font-letter-spacing-base: 0;
+  --tb-font-letter-spacing-button: 2px;
+
+  /* Colors */
+  --tb-color-background-primary: #FFFFFF;
+  --tb-color-background-secondary: #F5F5F5;
+
+  --tb-color-text: #212121;
+  --tb-color-accent: #293548;
+
+  --tb-color-border-light: rgba(33, 33, 33, 0.15);
+  --tb-color-border-dark: rgba(41, 53, 72, 0.15);
+
+  /* Spacing */
+  --tb-padding: 2.4rem;
 }
+
+/* TED BAKER BASE STYLES END */
+
 
 .product-card-wrapper .card,
 .contains-card--product {
@@ -241,40 +291,17 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 .text-body {
   font-size: 1.5rem;
   letter-spacing: 0.06rem;
-  line-height: calc(1 + 0.8 / var(--font-body-scale));
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-.h0,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5 {
-  font-family: var(--font-heading-family);
-  font-style: var(--font-heading-style);
-  font-weight: var(--font-heading-weight);
-  letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
-  color: rgb(var(--color-foreground));
-  line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
-  word-break: break-word;
-}
-
 .hxxl {
   font-size: clamp(calc(var(--font-heading-scale) * 5.6rem), 14vw, calc(var(--font-heading-scale) * 7.2rem));
-  line-height: 1.1;
 }
 
 .hxl {
   font-size: calc(var(--font-heading-scale) * 5rem);
-  line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
 }
 
 @media only screen and (min-width: 750px) {
@@ -860,7 +887,6 @@ summary::-webkit-details-marker {
 
 .subtitle {
   font-size: 1.8rem;
-  line-height: calc(1 + 0.8 / var(--font-body-scale));
   letter-spacing: 0.06rem;
   color: rgba(var(--color-foreground), 0.7);
 }
@@ -1189,42 +1215,8 @@ deferred-media {
 .shopify-challenge__button,
 .customer button,
 button.shopify-payment-button__button--unbranded {
-  --shadow-horizontal-offset: var(--buttons-shadow-horizontal-offset);
-  --shadow-vertical-offset: var(--buttons-shadow-vertical-offset);
-  --shadow-blur-radius: var(--buttons-shadow-blur-radius);
-  --shadow-opacity: var(--buttons-shadow-opacity);
-  --shadow-visible: var(--buttons-shadow-visible);
-  --border-offset: var(--buttons-border-offset); /* reduce radius edge artifacts */
-  --border-opacity: calc(1 - var(--buttons-border-opacity));
-  border-radius: var(--buttons-radius-outset);
-  position: relative;
-}
-
-.button,
-.shopify-challenge__button,
-.customer button,
-button.shopify-payment-button__button--unbranded {
   min-width: calc(12rem + var(--buttons-border-width) * 2);
   min-height: calc(4.5rem + var(--buttons-border-width) * 2);
-}
-
-.button,
-.shopify-challenge__button,
-.customer button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  padding: 0 3rem;
-  cursor: pointer;
-  font: inherit;
-  font-size: 1.5rem;
-  text-decoration: none;
-  color: rgb(var(--color-button-text));
-  transition: box-shadow var(--duration-short) ease;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: rgba(var(--color-button), var(--alpha-button-background));
 }
 
 .button:before,
@@ -1989,9 +1981,9 @@ input[type='checkbox'] {
   margin: 0;
 }
 
-.quantity__input[type='number'] {
+/* .quantity__input[type='number'] {
   -moz-appearance: textfield;
-}
+} */
 
 .quantity__rules {
   margin-top: 0.5rem;
@@ -2670,8 +2662,7 @@ details[open] .modal-overlay::after {
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 0 5rem 0 1rem;
-  line-height: calc(1 + 0.8 / var(--font-body-scale));
+  padding: 0 5rem 0 1rem;  
   position: relative;
 }
 

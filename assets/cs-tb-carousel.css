@@ -1,0 +1,390 @@
+/* Ted Baker Fonts */
+
+@font-face {
+    font-family: 'Futura Md BT';
+    src: url('https://cdn.shopify.com/s/files/1/0915/9976/5887/files/FuturaBT-Medium.woff2?v=1745718492') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+@font-face {
+    font-family: 'Futura Bk BT';
+    src: url('https://cdn.shopify.com/s/files/1/0915/9976/5887/files/FuturaBT-Book.woff2?v=1745718493') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Bk BT';
+    src: url('https://cdn.shopify.com/s/files/1/0915/9976/5887/files/FuturaBT-Light.woff2?v=1745719022') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* BASE STYLES */
+.carousel-section,
+.carousel-section a {
+    background-color: var(--tb-color-background-primary);
+    color: #1D1D1F;
+    font-family: var(--tb-font-body);
+    font-weight: var(--tb-font-weight-body);
+    font-size: var(--tb-font-size-body);
+}
+
+.carousel-section * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    letter-spacing: normal;
+}
+
+.carousel-section p {
+    line-height: 1.5;
+}
+
+.carousel-section .hero,
+.carousel-section h1,
+.carousel-section h2,
+.carousel-section h3,
+.carousel-section h4 {
+    font-family: var(--tb-font-body);
+    letter-spacing: normal;
+    line-height: 110%;
+}
+
+.carousel-section .hero {
+    font-size: var(--tb-font-size-hero);
+}
+
+.carousel-section h1 {
+    font-size: var(--tb-font-size-h1);
+}
+  
+.carousel-section h2 {
+    font-family: var(--tb-font-body);
+    font-weight: var(--tb-font-weight-body);
+    font-size: var(--tb-font-size-h2);
+}
+
+.carousel-section h2.subtle-header {
+    color: #6E6E73;
+}
+
+.carousel-section h3 {
+    font-family: var(--tb-font-heading);
+    font-size: var(--tb-font-size-h3);
+    letter-spacing: 1px;
+}
+
+.carousel-section h4 {
+    font-family: var(--tb-font-body);
+    font-size: var(--tb-font-size-h4);
+    letter-spacing: 1px;
+}
+
+.scroll-fade-in {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: opacity, transform;
+}
+
+.scroll-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-max-width {
+    max-width: 1600px;
+    width: 100%;
+    margin-inline: auto;
+}
+  
+@media (max-width: 1440px) {
+    .section-max-width {
+      max-width: 1280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-max-width {
+      max-width: 100%;
+    }
+}
+
+/* Carousel Styles */
+.carousel-section {
+    position: relative;
+    padding: 5rem 0;
+    padding-top: var(--padding-top);
+    padding-bottom: var(--padding-bottom);
+}
+
+.carousel-section__header {
+    display: inline-flex;
+    justify-content: flex-start;
+    margin-inline-end: auto;
+    padding-left: clamp(1.6rem, 10vw, 14rem);
+    padding-bottom: 0.8rem;
+}
+
+@media (max-width: 899px) {
+    .carousel-section__header {
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carousel-section__header {
+        max-width: 912px;
+        margin: 0 auto;
+        padding-left: auto;
+        padding-right: 1.6rem;
+    }
+}
+
+.carousel-section__track {
+    position: relative;
+    display: inline-flex;
+    padding-top: 1.6rem;
+    padding-bottom: 4rem;
+    padding-left: clamp(1.6rem, 10vw, 14rem);
+    scroll-padding-left: 14rem;
+    vertical-align: top;
+    width: 100%;;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 2rem;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carousel-section__track {
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0.2));
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0.2));
+}
+
+.carousel-section__track::after {
+    content: "";
+    flex: 0 0 14rem;
+}
+
+.carousel-section__track::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (min-width: 1300px) {
+    .carousel-section__track {
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0));
+      mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0));
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+    }
+}
+
+.carousel-section__card {
+    position: relative;
+    scroll-snap-align: start;
+    width: clamp(28rem, 35vw, 40rem);
+    aspect-ratio: 4 / 5;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border-radius: 5%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-section__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.carousel-section__card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-section__image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-section__card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    object-position: 50% 1%; /* This shifts it down */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-section__card:hover img {
+    transform: scale(1.12);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-section__card-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    z-index: 2;
+}
+
+.carousel-section__card-info-header {
+    padding-top: 2.4rem;
+}
+
+.carousel-section__card-info-header h3 {
+    font-weight: var(--tb-font-weight-heavy);
+    font-size: var(--tb-font-size-h2);
+}
+
+.carousel-section__card-info-desc {
+    padding-top: 1rem;
+    font-weight: var(--tb-font-weight-body);
+}
+
+.carousel-section__card-info-desc .carousel-section__product-highlight {
+    font-family: var(--tb-font-heading);
+    font-weight: var(--tb-font-weight-heavy);
+    padding-bottom: 0.6rem;
+}
+
+.carousel-section__card-info-desc .carousel-section__product-price {
+    font-size: var(--tb-font-size-small);
+}
+
+/* Arrows */
+.carousel-section .carousel-arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity 0.8s ease;
+    padding: 0 2rem;
+}
+
+.carousel-section .carousel-arrow--right {
+    position: absolute;
+    right: 2rem;
+}
+
+.carousel-section .carousel-arrow--right svg {
+    transform: rotate(180deg); 
+}
+
+
+.carousel-section:hover .carousel-arrow {
+    transform: scale(1.2);
+}
+
+.carousel-section .carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+
+.carousel-section .carousel-arrow--left {
+    position: absolute;
+    left: 2rem;
+}
+
+.carousel-section .carousel-arrow--left svg {
+    transform: translateX(-3px);
+}
+
+.carousel-section .carousel-arrow {
+    width: 5rem;
+    height: 5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    transform: scale(1);
+    transition: opacity 0.4s ease, transform 0.8s ease, background 0s;
+    opacity: 1;
+}
+
+.carousel-section:hover .carousel-arrows {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* TABLET / MOBILE STYLES */
+
+@media (max-width: 899px) {
+    .carousel-section__track {    
+      scroll-snap-align: center;
+      padding-left: 1.6rem;
+      scroll-padding-left: 1.6rem;
+      gap: 1.6rem;
+    }
+  
+    .carousel-section__card {
+      width: calc(100% - 4rem); /* Leaves space for a peek */
+      max-width: 36rem;
+    }
+  
+    .carousel-section__track::after {
+      content: '';
+      flex: 0 0 1.6rem; /* buffer for final peek */
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-section__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-inline-end: auto;
+        padding-bottom: 0.8rem;
+    }
+
+    .carousel-section__card {
+      scroll-snap-align: center;
+      width: 88%;
+    }
+  
+    .carousel-section__track {
+      gap: 1rem;
+      padding-left: 1rem;
+      scroll-padding-left: 1rem;
+    }
+  
+    .carousel-section__track::after {
+      flex: 0 0 1rem;
+    }
+}

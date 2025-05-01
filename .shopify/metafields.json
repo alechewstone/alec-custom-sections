@@ -8,7 +8,128 @@
   "market": [],
   "order": [],
   "page": [],
-  "product": [],
+  "product": [
+    {
+      "key": "eyewear-frame-design",
+      "namespace": "shopify",
+      "name": "Eyewear frame design",
+      "description": "Describes the style of sunglasses, such as aviator or cat-eye",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "color-pattern",
+      "namespace": "shopify",
+      "name": "Color",
+      "description": "Defines the primary color or pattern, such as blue or striped",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "clothing-accessory-material",
+      "namespace": "shopify",
+      "name": "Clothing accessory material",
+      "description": "Identifies the main material used in clothing accessories, like leather or linen",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "clothing-features",
+      "namespace": "shopify",
+      "name": "Clothing features",
+      "description": "Describes unique properties of apparel, such as water resistant or wrinkle resistant",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "handwear-material",
+      "namespace": "shopify",
+      "name": "Handwear material",
+      "description": "Describes the type of material used in gloves or mittens, such as faux fur or wool",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "handwear-features",
+      "namespace": "shopify",
+      "name": "Handwear features",
+      "description": "Describes special features of gloves or mittens, like adjustable closure or enhanced grip",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "handwear-type",
+      "namespace": "shopify",
+      "name": "Handwear type",
+      "description": "Classifies the type of handwear, e.g. fingerless gloves, snow gloves",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "bag-case-material",
+      "namespace": "shopify",
+      "name": "Bag/Case material",
+      "description": "Identifies the main material used in a bag or case, such as leather or canvas",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "jewelry-material",
+      "namespace": "shopify",
+      "name": "Jewelry material",
+      "description": "Identifies the main material used in jewelry items, such as gold or enamel",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "jewelry-type",
+      "namespace": "shopify",
+      "name": "Jewelry type",
+      "description": "Distinguishes between types of jewelry, such as fine or imitation jewelry",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "lens-color",
+      "namespace": "shopify",
+      "name": "Lens color",
+      "description": "Specifies the color of eyewear lenses, such as yellow or black",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "highlight",
+      "namespace": "custom",
+      "name": "Product Highlight",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ],
   "variant": [],
   "shop": []
 }
