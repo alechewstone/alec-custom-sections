@@ -9,62 +9,23 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -72,13 +33,227 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "cs_tb_featured_collections_grid_VaEBAL": {
+      "type": "cs-tb-featured-collections-grid",
+      "blocks": {
+        "collection_card_Vih6Mp": {
+          "type": "collection_card",
+          "settings": {
+            "background_color": "#ffbfc1",
+            "collection": "womens",
+            "custom_image": "shopify://shop_images/bak249306_c15midblue_v15_11.webp",
+            "fill_block": false,
+            "show_card_content": true,
+            "collection_heading": "WOMEN'S",
+            "block_heading": "20% off new in styles",
+            "description": "put a spring in your step with 20% off all new season styles.",
+            "button_link": "shopify://collections/womens",
+            "button_text": "use code: newseason20"
+          }
+        },
+        "collection_card_6kBCA7": {
+          "type": "collection_card",
+          "settings": {
+            "background_color": "#98a9cc",
+            "collection": "men",
+            "custom_image": "shopify://shop_images/Ted-Blog-Entry-768x768.jpg",
+            "fill_block": false,
+            "show_card_content": true,
+            "collection_heading": "men's",
+            "block_heading": "20% off new in styles",
+            "description": "put a spring in your step with 20% off all new season styles.",
+            "button_link": "shopify://collections/men",
+            "button_text": "use code: newseason20"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_Vih6Mp",
+        "collection_card_6kBCA7"
+      ],
+      "name": "2 Column Grid (Frame)",
+      "settings": {
+        "enable_mobile_carousel": false,
+        "show_scroll_arrows": false,
+        "button_hover_style": "rotating-swipe",
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "cs_tb_featured_collections_grid_Hdhrrt": {
+      "type": "cs-tb-featured-collections-grid",
+      "blocks": {
+        "collection_card_6pJzgb": {
+          "type": "collection_card",
+          "settings": {
+            "background_color": "#ffffff",
+            "collection": "womens",
+            "fill_block": true,
+            "show_card_content": true,
+            "collection_heading": "Collection Heading",
+            "block_heading": "Block Heading",
+            "description": "Block description",
+            "button_link": "/",
+            "button_text": "shop the collection"
+          }
+        },
+        "collection_card_NQYiGY": {
+          "type": "collection_card",
+          "settings": {
+            "background_color": "#ffffff",
+            "collection": "men",
+            "fill_block": true,
+            "show_card_content": true,
+            "collection_heading": "Collection Heading",
+            "block_heading": "Block Heading",
+            "description": "Block description",
+            "button_link": "/",
+            "button_text": "shop the collection"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_6pJzgb",
+        "collection_card_NQYiGY"
+      ],
+      "name": "2 Column Grid (Fill)",
+      "settings": {
+        "enable_mobile_carousel": false,
+        "show_scroll_arrows": false,
+        "button_hover_style": "fade-swipe",
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "cs_tb_featured_collections_grid_9MrQ7Q": {
+      "type": "cs-tb-featured-collections-grid",
+      "blocks": {
+        "collection_card_YQhWyX": {
+          "type": "collection_card",
+          "settings": {
+            "background_color": "#ffffff",
+            "collection": "womens",
+            "fill_block": true,
+            "show_card_content": true,
+            "collection_heading": "Collection Heading",
+            "block_heading": "Block Heading",
+            "description": "Block description",
+            "button_link": "/",
+            "button_text": "shop the collection"
+          }
+        },
+        "collection_card_PAEdVd": {
+          "type": "collection_card",
+          "settings": {
+            "background_color": "#ffffff",
+            "collection": "men",
+            "fill_block": true,
+            "show_card_content": true,
+            "collection_heading": "Collection Heading",
+            "block_heading": "Block Heading",
+            "description": "Block description",
+            "button_link": "/",
+            "button_text": "shop the collection"
+          }
+        },
+        "collection_card_9Czd86": {
+          "type": "collection_card",
+          "settings": {
+            "background_color": "#ffffff",
+            "collection": "kids",
+            "fill_block": true,
+            "show_card_content": true,
+            "collection_heading": "Collection Heading",
+            "block_heading": "Block Heading",
+            "description": "Block description",
+            "button_link": "/",
+            "button_text": "shop the collection"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_YQhWyX",
+        "collection_card_PAEdVd",
+        "collection_card_9Czd86"
+      ],
+      "name": "3 Column Grid (Fill)",
+      "settings": {
+        "enable_mobile_carousel": true,
+        "show_scroll_arrows": true,
+        "button_hover_style": "fade-swipe",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "cs_tb_accordion_FWxeKR": {
+      "type": "cs-tb-accordion",
+      "blocks": {
+        "accordion_item_wKicNe": {
+          "type": "accordion_item",
+          "settings": {
+            "item_title": "Where is my order?",
+            "item_text": "<p>You can click the tracking link from your Order Dispatch email. If you haven’t yet received an Order Dispatch email don’t fret, it will be with you soon (up to 5 days after you have placed your order).</p><p>If you do have a tracking number, visit the 'Track My Order' page and input your details for more information.</p><p>If you need any help, you can <a href=\"https://www.tedbaker.com/pages/contact\" title=\"Contact Us\">Contact Us</a>.</p>"
+          }
+        },
+        "accordion_item_t7Ktym": {
+          "type": "accordion_item",
+          "settings": {
+            "item_title": "How do I return my online order?",
+            "item_text": "<p>It's very simple we have a portal to help with all of your return needs – visit our returns page for all the information you'll need by clicking <a href=\"https://www.tedbaker.com/pages/shipping-returns\" title=\"Shipping & Returns\">here.</a></p>"
+          }
+        },
+        "accordion_item_TkcMnU": {
+          "type": "accordion_item",
+          "settings": {
+            "item_title": "My item has reduced in price, do you price match?",
+            "item_text": "<p>Ted Baker does not offer price matching against other retailers. However, if an item purchased from <a href=\"http://www.tedbaker.com/\"><strong>www.tedbaker.com</strong></a> has been recently reduced in price during a promotional event and is still available for purchase at the reduced price, you may request a price adjustment by contacting our customer service team.</p><p><strong>Conditions:</strong></p><p><em><strong>Timeframe</strong></em>: Price adjustments can only be made within <strong>14 days</strong> of your order date. Requests submitted after this period will not be eligible.</p><p><em><strong>Limitations</strong></em>: Only one price adjustment can be processed per order. Price adjustments are not applicable for events such as \"Spend & Save,\" free delivery offers, or outlet reductions.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_wKicNe",
+        "accordion_item_t7Ktym",
+        "accordion_item_TkcMnU"
+      ],
+      "name": "FAQs",
+      "settings": {
+        "accordion_header": "Help & FAQs",
+        "separation_line": true,
+        "enable_scroll_animation": true,
+        "animation_speed": 500,
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "cs_tb_carousel_kJmFKL": {
+      "type": "cs-tb-carousel",
+      "name": "Collection carousel",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "product_collection": "mens-accessories",
+        "product_limit": 10,
+        "carousel_title": "Men's accessories.",
+        "carousel_subtitle": "For style and individuality.",
+        "show_product_highlight": true,
+        "show_scroll_arrows": true,
+        "enable_scroll_animation": true,
+        "animation_speed": 600,
+        "sequential_fade": true
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "cs_tb_featured_collections_grid_VaEBAL",
+    "cs_tb_featured_collections_grid_Hdhrrt",
+    "cs_tb_featured_collections_grid_9MrQ7Q",
+    "cs_tb_accordion_FWxeKR",
+    "cs_tb_carousel_kJmFKL"
   ]
 }

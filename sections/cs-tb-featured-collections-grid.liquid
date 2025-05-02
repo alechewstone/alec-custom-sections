@@ -1,0 +1,226 @@
+{{ 'cs-reset.css' | asset_url | stylesheet_tag }}
+{{ 'cs-tb-featured-collections-grid.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .featured-collections-grid--{{ section.id }} {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
+{% assign block_count = section.blocks.size %}
+<div class="featured-collections-grid__wrapper section-max-width{% if section.settings.enable_mobile_carousel %} mobile-carousel js-carousel-section{% endif %}">
+
+  {% if section.settings.show_scroll_arrows %}
+    <div class="carousel-arrows">
+      <button class="carousel-arrow carousel-arrow--left" aria-label="Scroll left">
+        {% render 'icon-arrow' %}
+      </button>
+
+      <button class="carousel-arrow carousel-arrow--right" aria-label="Scroll right">
+        {% render 'icon-arrow' %}
+      </button>
+    </div>
+  {% endif %}
+
+  <section
+    class="featured-collections-grid
+    featured-collections-grid--{{ section.id }}
+      {% if block_count == 2 %} two-blocks {% else %} three-blocks {% endif %}"
+    {% if section.settings.enable_mobile_carousel %}
+    data-carousel
+    {% endif %}>
+    {% for block in section.blocks %}
+      <div class="
+    {% if block.settings.fill_block %} featured-collections-grid__card--fill-block {% else %} featured-collections-grid__card--frame {% endif %}" style="background-color: {{ block.settings.background_color }}">
+        {% assign collection = collections[block.settings.collection] %}
+          {% if block.settings.fill_block %}
+
+          <!-- Fill Block Layout -->
+          <a href="{{ collection.url }}">
+            {% assign custom_image = block.settings.custom_image | default: collection.featured_image %}
+            {{ custom_image | image_url: width: 1920 | image_tag: srcset: '360w: 360, 540w: 540, 720w: 720, 900w: 900', sizes: '(max-width: 768px) 80vw, 33vw', alt: product.title, loading: 'lazy' }}
+          </a>
+
+          <div class="featured-collections-grid__card-content">
+            <h1 class="featured-collections-grid__collection-title">
+              {% if block.settings.heading == blank %}
+                {{ collection.title }}
+              {% else %}
+                {{ block.settings.heading }}
+              {% endif %}
+            </h1>
+            <a href="{{ block.settings.button_link }}" class="button button--hover-{{ section.settings.button_hover_style }}">
+              {{ block.settings.button_text }}
+            </a>
+          </div>
+
+        {% else %}
+
+          <!-- Frame Layout -->
+          <div class="featured-collections-grid__collection-card">
+            <a href="{{ collection.url }}" class="featured-collections-grid__collection-card-link">
+              {% assign custom_image = block.settings.custom_image | default: collection.featured_image %}
+              {{ custom_image | image_url: width: 1920 | image_tag: srcset: '360w: 360, 540w: 540, 720w: 720, 900w: 900', sizes: '(max-width: 768px) 80vw, 33vw', alt: product.title, loading: 'lazy' }}
+
+              <h1 class="featured-collections-grid__collection-title">
+                {% if block.settings.collection_heading == blank %}
+                  {{ collection.title }}
+                {% else %}
+                  {{ block.settings.collection_heading }}
+                {% endif %}
+              </h1>
+            </a>
+          </div>
+
+          {% if block.settings.show_card_content == true %}
+            <div class="featured-collections-grid__card-content ">
+              <h2 class="featured-collections-grid__collection-card-heading">
+                {{ block.settings.block_heading }}
+              </h2>
+              <p class="featured-collections-grid__collection-card-description">
+                {% if block.settings.description == blank %}
+                  {{ collection.description }}
+                {% else %}
+                  {{ block.settings.description }}
+                {% endif %}
+              </p>
+              <a href="{{ block.settings.button_link }}" class="button button--hover-{{ section.settings.button_hover_style }}">
+                {{ block.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </section>
+</div>
+
+{% schema %}
+  {
+    "name": "Featured collections grid",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_mobile_carousel",
+        "label": "Enable Carousel on Mobile",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_scroll_arrows",
+        "label": "Show Scroll Arrows (NOTE: only use when Mobile Carousel is enabled)",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "button_hover_style",
+        "label": "Button Hover Style",
+        "options": [
+          {
+            "value": "fade-swipe",
+            "label": "Fade out on hover, swipe in after"
+          }, {
+            "value": "rotating-swipe",
+            "label": "Rotating swipe"
+          }
+        ],
+        "default": "fade-swipe"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 200,
+        "step": 20,
+        "unit": "px",
+        "default": 40
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 200,
+        "step": 20,
+        "unit": "px",
+        "default": 40
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection_card",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_image",
+            "label": "Custom Image (if not selected - will default to collection image)"
+          },
+          {
+            "type": "checkbox",
+            "id": "fill_block",
+            "label": "Fill Entire Block with Collection Card",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "show_card_content",
+            "label": "Show collection card text content",
+            "default": true
+          }, {
+            "type": "text",
+            "id": "collection_heading",
+            "label": "Collection Heading (leave blank to default to collection name)",
+            "default": "Collection Heading"
+          }, {
+            "type": "text",
+            "id": "block_heading",
+            "label": "Block Heading (write some information for this block)",
+            "default": "Block Heading"
+          }, {
+            "type": "text",
+            "id": "description",
+            "label": "Description (leave blank to default to collection description)",
+            "default": "Block description"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link",
+            "default": "/"
+          }, {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Shop Now"
+          }
+        ]
+      }
+    ],
+    "max_blocks": 3,
+    "presets": [
+      {
+        "name": "Featured collections grid",
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "collection_card"
+          }, {
+            "type": "collection_card"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,228 @@
+/* Ted Baker Fonts */
+
+@font-face {
+    font-family: 'Futura Md BT';
+    src: url('https://cdn.shopify.com/s/files/1/0915/9976/5887/files/FuturaBT-Medium.woff2?v=1745718492') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+@font-face {
+    font-family: 'Futura Bk BT';
+    src: url('https://cdn.shopify.com/s/files/1/0915/9976/5887/files/FuturaBT-Book.woff2?v=1745718493') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Bk BT';
+    src: url('https://cdn.shopify.com/s/files/1/0915/9976/5887/files/FuturaBT-Light.woff2?v=1745719022') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* BASE STYLES */
+.accordion-section,
+.accordion-section a {
+    background-color: var(--tb-color-background-primary);
+    color: var(--tb-color-text);
+    font-family: var(--tb-font-body);
+    font-weight: var(--tb-font-weight-body);
+    font-size: var(--tb-font-size-body);
+}
+
+.accordion-section * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    letter-spacing: normal;
+}
+
+.accordion-section p {
+    line-height: 1.5;
+}
+
+.accordion-section .hero,
+.accordion-section h1,
+.accordion-section h2,
+.accordion-section h3,
+.accordion-section h4 {
+    font-family: var(--tb-font-body);
+    font-weight: var(--tb-font-weight-body);
+    text-transform: uppercase;
+    letter-spacing: normal;
+    line-height: 110%;
+}
+
+.accordion-section .hero {
+    font-size: var(--tb-font-size-hero);
+}
+
+.accordion-section h1 {
+    font-size: var(--tb-font-size-h1);
+}
+  
+.accordion-section h2 {
+    font-family: var(--tb-font-body);
+    font-weight: var(--tb-font-weight-body);
+    font-size: var(--tb-font-size-h2);
+    letter-spacing: 2.5px;
+}
+
+.accordion-section h3 {
+    font-family: var(--tb-font-body);
+    font-weight: var(--tb-font-weight-body);
+    font-size: var(--tb-font-size-h3);
+    letter-spacing: 2.5px;
+}
+
+.accordion-section h4 {
+    font-family: var(--tb-font-body);
+    font-weight: var(--tb-font-weight-body);
+    font-size: var(--tb-font-size-h4);
+    letter-spacing: 2.5px;
+}
+
+.accordion-section button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+}
+
+.scroll-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+  
+.scroll-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}  
+
+.section-max-width {
+    max-width: 1600px;
+    width: 100%;
+    margin-inline: auto;
+}
+  
+@media (max-width: 1440px) {
+    .section-max-width {
+      max-width: 1280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-max-width {
+      max-width: 100%;
+    }
+}
+
+/* SECTION STYLES */
+.accordion-section {
+    padding-top: var(--padding-top);
+    padding-bottom: var(--padding-bottom);
+}
+
+.accordion-section__upper {
+    padding-left: 34rem;
+    padding-right: 34rem;
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+    text-align: center;
+  }
+  
+  @media (max-width: 1200px) {
+    .accordion-section__upper {
+      padding-left: 12rem;
+      padding-right: 12rem;
+    }
+  }
+
+.accordion-section__header {
+    margin-block: 2rem;
+}
+
+.accordion-section__inner {
+    box-sizing: border-box; /* Just to be sure */
+    max-width: 880px;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 0.8rem;
+    padding-left: 0; /* Important for >1200px */
+    padding-right: 0;
+}
+  
+@media (max-width: 1200px) {
+    .accordion-section__inner {
+      max-width: 912px;
+      margin: 0 auto;
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
+    }
+}
+
+.accordion-section__item {
+    border-bottom: 1px solid var(--tb-color-border-dark);
+    margin-bottom: 1.6rem;
+}
+
+.accordion-section__item-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.accordion-section__item-header .accordion-section__toggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-section__toggle svg {
+    height: 2rem;
+    width: 2rem;
+}
+
+.accordion-section__icon .accordion-section__icon-line--vertical {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform-origin: center;
+}
+  
+.accordion-section__toggle[aria-expanded="true"] .accordion-section__icon-line--vertical {
+    transform: scaleY(0);
+    opacity: 0;
+}
+  
+.accordion-section__toggle[aria-expanded="false"] .accordion-section__icon-line--vertical {
+    transform: scaleY(1);
+    opacity: 1;
+}  
+
+.accordion-section__content {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.6rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s ease;
+}
+
+.accordion-section__content--open {
+    opacity: 1;
+}
+
+.accordion-section__content p {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+    padding-inline: 1.2rem;
+}

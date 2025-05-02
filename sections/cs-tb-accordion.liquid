@@ -1,0 +1,135 @@
+{{ 'cs-reset.css' | asset_url | stylesheet_tag }}
+{{ 'cs-tb-accordion.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cs-tb-accordion.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .accordion-section--{{ section.id }} {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
+<section
+  class="accordion-section
+  accordion-section--{{ section.id }}
+  section-max-width
+    {% if section.settings.enable_scroll_animation %} scroll-animate-enabled scroll-fade-in{% endif %}"
+  {% if section.settings.enable_scroll_animation %}
+  data-animation-speed="{{ section.settings.animation_speed }}"
+  {% endif %}>
+  <div class="accordion-section__upper">
+    {% if section.settings.accordion_header != blank %}
+      <h1 class="accordion-section__header">{{ section.settings.accordion_header }}</h1>
+    {% endif %}
+  </div>
+
+  <div class="accordion-section__inner">
+    {% for block in section.blocks %}
+      <div class="accordion-section__item scroll-fade-in {% if section.settings.separation_line == true %}accordion-section__item--with-separator{% endif %}" style="transition-delay: {{ forloop.index0 | times: section.settings.animation_speed | divided_by: 4 }}ms;">
+        <div class="accordion-section__item-header">
+          <button
+            class="accordion-section__toggle"
+            aria-expanded="false"
+            aria-controls="accordion-section__content-{{ block.id }}">
+            <h2>{{ block.settings.item_title }}</h2>
+
+            {% render 'accordion-section-icon' %}
+          </button>
+        </div>
+
+        <div
+          id="accordion-section__content-{{ block.id }}"
+          class="accordion-section__content"
+          hidden>
+          <p class="accordion-section__item-text">{{ block.settings.item_text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Accordion",
+    "settings": [
+      {
+        "type": "text",
+        "id": "accordion_header",
+        "label": "Accordion Header"
+      },
+      {
+        "type": "checkbox",
+        "id": "separation_line",
+        "label": "Separation line between items",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_scroll_animation",
+        "label": "Enable Scroll Animation",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "animation_speed",
+        "label": "Scroll Animation Speed (ms)",
+        "min": 100,
+        "max": 1500,
+        "step": 100,
+        "default": 600
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 200,
+        "step": 20,
+        "unit": "px",
+        "default": 40
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 200,
+        "step": 20,
+        "unit": "px",
+        "default": 40
+      }
+    ],
+    "blocks": [
+      {
+        "type": "accordion_item",
+        "name": "Accordion Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "item_title",
+            "label": "Title",
+            "default": "Title"
+          }, {
+            "type": "richtext",
+            "id": "item_text",
+            "label": "Item Text",
+            "default": "<p>Accordion item content</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Accordion",
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "accordion_item"
+          }, {
+            "type": "accordion_item"
+          }, {
+            "type": "accordion_item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
