@@ -1,0 +1,94 @@
+{{ 'cs-reset.css' | asset_url | stylesheet_tag }}
+{{ 'product-details.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .product-details--{{ section.id }} {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
+<section class="product-details product-details--{{ section.id }} page-width">
+  {% if block.settings.product_details_section_header != blank %}
+    <div class="product-details__header">
+      <h3 class="product-details__title">
+        {{ block.settings.product_details_section_header }}
+      </h3>
+    </div>
+  {% endif %}
+  <div class="product-details__container">
+    {% assign attr = block.settings.standard_attribute %}
+    {% assign custom_key = block.settings.custom_metafield %}
+    {% if attr != blank or custom_key != blank %}
+      <div class="product-details__block">
+
+        {% if attr == "vendor" %}
+          <h4>Vendor</h4>
+          <p>{{ product.vendor }}</p>
+
+        {% elsif attr == "product_type" %}
+          <h4>Product Type</h4>
+          <p>{{ product.type }}</p>
+
+        {% elsif attr == "product_category" %}
+          <h4>Product Category</h4>
+          <p>{{ product.category }}</p>
+
+        {% elsif attr == "sku" %}
+          {% if product.variants.first.sku == blank %}
+            <h4>SKU</h4>
+            <p>No SKU available</p>
+          {% else %}
+            <h4>SKU</h4>
+            <p>{{ product.variants.first.sku }}</p>
+          {% endif %}
+
+        {% elsif attr == "available" %}
+          <h4>Availability</h4>
+          <p>
+            {% if product.available %}
+              In stock
+            {% else %}
+              Sold out
+            {% endif %}
+          </p>
+
+        {% elsif attr == "tags" %}
+          <h4>Tags</h4>
+          <p>{{ product.tags | join: ", " }}</p>
+
+        {% elsif attr == "color" %}
+          {% assign color_option = product.options_with_values | where: "name", "Color" | first %}
+          {% if color_option %}
+            <h4>Color</h4>
+            <p>{{ color_option.values | join: ", " }}</p>
+          {% endif %}
+        {% endif %}
+
+        {% unless attr != "" or custom_key == blank %}
+          {%- assign parts = custom_key | split: '.' -%}
+          {%- assign ns = parts[0] -%}
+          {%- assign key = parts[1] -%}
+          {%- assign mf = product.metafields[ns][key] -%}
+
+          {% if mf %}
+            <h4>
+              {% assign words = key | split: '_' %}
+              {% for word in words %}
+                {{ word | capitalize }}{% unless forloop.last %}
+                {% endunless %}
+              {% endfor %}
+            </h4>
+            <p>{{ mf.value }}</p>
+          {% endif %}
+        {% endunless %}
+
+        {% if block.settings.custom_metafield == blank and attr == blank %}
+          <h4>Metafield</h4>
+          <p>No metafield or standard attribute selected</p>
+        {% endif %}
+
+      </div>
+    {% endif %}
+  </div>
+</section>

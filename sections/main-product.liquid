@@ -461,6 +461,9 @@
                   render 'share-button', block: block, share_link: share_url
                 %}
 
+              {%- when 'product_details' -%}
+                {% render 'product-details', block: block %}
+
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
@@ -733,6 +736,82 @@
     {
       "type": "@app"
     },
+    {
+        "type": "product_details",
+        "name": "Product Details",
+        "settings": [
+          {
+            "type": "text",
+            "id": "product_details_section_header",
+            "label": "Section Heading i.e. Product Details (only add to the first block)"
+          },
+          {
+            "type": "header",
+            "content": "For standard product fields:"
+          },
+          {
+            "type": "select",
+            "id": "standard_attribute",
+            "label": "Standard Product Field",
+            "options": [
+              {
+                "value": "",
+                "label": ""
+              },
+              {
+                "value": "available",
+                "label": "Availability (In stock / Sold out)"
+              },
+              {
+                "value": "color",
+                "label": "Color (from options)"
+              },
+              {
+                "value": "product_type",
+                "label": "Product type"
+              }, {
+                "value": "product_category",
+                "label": "Product category"
+              }, {
+                "value": "sku",
+                "label": "SKU (first variant)"
+              }, {
+                "value": "tags",
+                "label": "Product tags"
+              }, {
+                "value": "vendor",
+                "label": "Vendor"
+              }
+            ],
+            "default": ""
+          },
+          {
+            "type": "header",
+            "content": "For custom product fields:"
+          },
+          {
+            "type": "text",
+            "id": "custom_metafield",
+            "label": "Custom Product Metafield",
+            "info": "NOTE: Shopify does not support dynamic metafield keys. Use the format 'namespace.key', e.g 'custom.color' as per instructions below."
+          }, {
+            "type": "paragraph",
+            "content": "How to find the metafield key:"
+          }, {
+            "type": "paragraph",
+            "content": "1. Go to the product in Shopify admin."
+          }, {
+            "type": "paragraph",
+            "content": "2. Scroll to the 'Metafields' section."
+          }, {
+            "type": "paragraph",
+            "content": "3. Click on the metafield name to open the metafield settings."
+          }, {
+            "type": "paragraph",
+            "content": "4. Copy the 'Namespace and key' value (near the top in the first pill)."
+          }
+        ]
+      },
     {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
