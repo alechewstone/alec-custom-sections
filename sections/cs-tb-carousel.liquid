@@ -1,0 +1,166 @@
+{{ 'cs-reset.css' | asset_url | stylesheet_tag }}
+{{ 'cs-tb-carousel.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cs-tb-carousel.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .carousel-section--{{ section.id }} {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
+<section
+  class="carousel-section
+  carousel-section--{{ section.id }}
+  section-max-width
+    {% if section.settings.enable_scroll_animation %} scroll-animate-enabled{% endif %}{% if section.settings.sequential_fade %} sequential-fade{% endif %}"
+  {% if section.settings.enable_scroll_animation %}
+  data-animation-speed="{{ section.settings.animation_speed }}"
+  {% endif %}>
+
+  {% assign collection = collections[section.settings.product_collection] %}
+  {% if collection == nil %}
+    {% assign collection = collections['new'] %}
+  {% endif %}
+  <div class="carousel-section__header">
+    {% if section.settings.carousel_title != blank %}
+      <h2>{{ section.settings.carousel_title }}&nbsp</h2>
+    {% else %}
+      <h2>{{ collection.title }}&nbsp</h2>
+    {% endif %}
+
+    {% if section.settings.carousel_subtitle != blank %}
+      <h2 class="subtle-header">{{ section.settings.carousel_subtitle }}</h2>
+    {% else %}
+      <h2 class="subtle-header">{{ collection.description }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="carousel-section__track">
+    {% for product in collection.products limit: section.settings.product_limit %}
+      <div class="carousel-section__card scroll-fade-in">
+        <a href="{{ product.url }}">
+          <div class="carousel-section__image">
+            {% if product.featured_image %}
+              {{ product.featured_image | image_url: width: 720 | image_tag: srcset: '360w: 360, 540w: 540, 720w: 720, 900w: 900', sizes: '(max-width: 768px) 80vw, 33vw', alt: product.title, loading: 'lazy' }}
+            {% endif %}
+            {% if product.available %}
+              <span class="product-available">Available</span>
+            {% else %}
+              <span class="product-unavailable">Unavailable</span>
+            {% endif %}
+          </div>
+          <div class="carousel-section__card-info">
+            <div class="carousel-section__card-info-header">
+              <h3 class="carousel-section__product-title">{{ product.title }}</h3>
+            </div>
+            <div class="carousel-section__card-info-desc">
+              {% if product.metafields.custom.highlight != blank %}
+                <p class="carousel-section__product-highlight">{{ product.metafields.custom.highlight }}.</p>
+              {% endif %}
+              {% if product.price %}
+                <p class="carousel-section__product-price">{{ product.price | money }}</p>
+              {% endif %}
+            </div>
+
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  {% if section.settings.show_scroll_arrows %}
+    <div class="carousel-arrows">
+      <button class="carousel-arrow carousel-arrow--left" aria-label="Scroll left">
+        {% render 'icon-arrow' %}
+      </button>
+
+      <button class="carousel-arrow carousel-arrow--right" aria-label="Scroll right">
+        {% render 'icon-arrow' %}
+      </button>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+  {
+    "name": "Collection carousel",
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 200,
+        "step": 20,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 200,
+        "step": 20,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "collection",
+        "id": "product_collection",
+        "label": "Product Collection"
+      },
+      {
+        "type": "range",
+        "id": "product_limit",
+        "label": "Number of Products to Show",
+        "min": 3,
+        "max": 20,
+        "step": 1,
+        "default": 10
+      }, {
+        "type": "text",
+        "id": "carousel_title",
+        "label": "Carousel Title"
+      }, {
+        "type": "text",
+        "id": "carousel_subtitle",
+        "label": "Carousel Subtitle"
+      }, {
+        "type": "checkbox",
+        "id": "show_product_highlight",
+        "label": "Show Product Highlight (Metafield)",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_scroll_arrows",
+        "label": "Show Scroll Arrows",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "enable_scroll_animation",
+        "label": "Enable Scroll Animation",
+        "default": true
+      }, {
+        "type": "range",
+        "id": "animation_speed",
+        "label": "Scroll Animation Speed (ms)",
+        "min": 100,
+        "max": 1500,
+        "step": 100,
+        "default": 600
+      }, {
+        "type": "checkbox",
+        "id": "sequential_fade",
+        "label": "Enable Sequential Fade-in",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection carousel",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,70 @@
+{{ 'cs-reset.css' | asset_url | stylesheet_tag }}
+{{ 'product-details-v2.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .product-details--{{ section.id }} {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
+<section class="product-details product-details--{{ section.id }} page-width">
+  <div class="product-details__header">
+    <h2 class="product-details__title">
+      {{ section.settings.section_header }}
+    </h2>
+  </div>
+  <div class="product-details__container">
+    {% content_for 'blocks' %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Product Details v2",
+    "blocks": [
+      {
+        "type": "@theme"
+      }, {
+        "type": "@app"
+      }
+    ],
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 200,
+        "step": 20,
+        "unit": "px",
+        "default": 40
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 200,
+        "step": 20,
+        "unit": "px",
+        "default": 40
+      }, {
+        "type": "text",
+        "id": "section_header",
+        "label": "Section Header",
+        "default": "Product Details"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Details v2",
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "product-details-text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
