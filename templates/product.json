@@ -148,63 +148,15 @@
             "standard_attribute": "product_type",
             "custom_metafield": ""
           }
-        },
-        "details_zxkkwJ": {
-          "type": "details",
-          "settings": {
-            "standard_attribute": "product_category",
-            "custom_metafield": ""
-          }
-        },
-        "details_9ytEjB": {
-          "type": "details",
-          "settings": {
-            "standard_attribute": "sku",
-            "custom_metafield": ""
-          }
-        },
-        "details_dgyNkE": {
-          "type": "details",
-          "settings": {
-            "standard_attribute": "tags",
-            "custom_metafield": ""
-          }
-        },
-        "details_Gk3j6c": {
-          "type": "details",
-          "settings": {
-            "standard_attribute": "vendor",
-            "custom_metafield": ""
-          }
-        },
-        "details_HWFmUN": {
-          "type": "details",
-          "settings": {
-            "standard_attribute": "",
-            "custom_metafield": "custom.product_features"
-          }
-        },
-        "details_a6ax8E": {
-          "type": "details",
-          "settings": {
-            "standard_attribute": "",
-            "custom_metafield": "custom.highlight"
-          }
         }
       },
       "block_order": [
         "details_GcVECj",
         "details_49WrK9",
         "details_CiUmUM",
-        "details_hwDPk7",
-        "details_zxkkwJ",
-        "details_9ytEjB",
-        "details_dgyNkE",
-        "details_Gk3j6c",
-        "details_HWFmUN",
-        "details_a6ax8E"
+        "details_hwDPk7"
       ],
-      "name": "Product Details",
+      "name": "Product Details (Original Version)",
       "settings": {
         "padding_top": 40,
         "padding_bottom": 40,
@@ -236,10 +188,45 @@
         "product_details_text_wEr3Xx",
         "product_details_text_7ytaB4"
       ],
-      "name": "Product Details v2",
+      "name": "Product Details (Nested)",
       "settings": {
         "padding_top": 40,
         "padding_bottom": 40,
+        "section_header": "Product Details"
+      }
+    },
+    "product_details_v3_Kb3rJD": {
+      "type": "product-details-v3",
+      "blocks": {
+        "product_details_metafield_G4nnnr": {
+          "type": "product-details-metafield",
+          "settings": {
+            "product-details-namespace": "Color",
+            "product-details-value": "{{ product.metafields.shopify[\"color-pattern\"] | metafield_text: field: 'label' }}"
+          }
+        },
+        "product_details_metafield_HNjzFp": {
+          "type": "product-details-metafield",
+          "settings": {
+            "product-details-namespace": "Vendor",
+            "product-details-value": "{{ product.vendor }}"
+          }
+        },
+        "product_details_metafield_REgX7m": {
+          "type": "product-details-metafield",
+          "settings": {
+            "product-details-namespace": "Hello",
+            "product-details-value": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_details_metafield_G4nnnr",
+        "product_details_metafield_HNjzFp",
+        "product_details_metafield_REgX7m"
+      ],
+      "name": "Product Details (Dynamic)",
+      "settings": {
         "section_header": "Product Details"
       }
     },
@@ -267,6 +254,7 @@
     "main",
     "product_details_4hBDAf",
     "product_details_v2_4rY4bc",
+    "product_details_v3_Kb3rJD",
     "related-products"
   ]
 }

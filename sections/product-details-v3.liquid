@@ -1,0 +1,65 @@
+<section class="product-details product-details--{{ section.id }} page-width">
+  <div class="product-details__header">
+    <h2 class="product-details__title">
+      {{ section.settings.section_header }}
+    </h2>
+  </div>
+  <div class="product-details__container">
+    {% for block in section.blocks %}
+      <div class="product-details__block">
+
+        {% if block.settings.product_details_namespace != blank %}
+          <h4>{{ block.settings.product-details-namespace }}</h4>
+        {% else %}
+          <h4>Input namespace</h4>
+        {% endif %}
+
+        {% if block.settings.product-details-value != blank %}
+          <p>{{ block.settings.product-details-value }}</p>
+        {% else %}
+          <p>Connect dynamic source</p>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Product Metafields",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_header",
+        "label": "Section Header",
+        "default": "Product Details"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product-details-metafield",
+        "name": "Metafield",
+        "settings": [
+          {
+            "type": "text",
+            "id": "product_details_namespace",
+            "label": "Namespace (manual entry)",
+            "info": "e.g. 'custom' or 'color'"
+          }, {
+            "type": "text",
+            "id": "product-details-value",
+            "label": "Value (populate with dynamic source)",
+            "info": "e.g. 'material' or 'pattern'"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Metafields",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
