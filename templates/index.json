@@ -246,6 +246,55 @@
         "animation_speed": 600,
         "sequential_fade": true
       }
+    },
+    "1751013687115b439c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8134963_einEn7": {
+          "type": "ai_gen_block_8134963",
+          "settings": {
+            "layout": "image_left",
+            "mobile_layout": "image_top",
+            "vertical_alignment": "center",
+            "image_width": 50,
+            "image_aspect_ratio": "4/3",
+            "image_border_radius": 8,
+            "heading": "Feature Highlight",
+            "description": "<p>Showcase your products, features, or brand messaging with this flexible image and text combination.</p>",
+            "button_text": "",
+            "button_link": "",
+            "text_alignment": "left",
+            "mobile_text_alignment": "center",
+            "heading_size": 32,
+            "mobile_heading_size": 24,
+            "heading_weight": "600",
+            "text_size": 16,
+            "mobile_text_size": 14,
+            "background_color": "#ffffff",
+            "heading_color": "#000000",
+            "text_color": "#666666",
+            "button_background": "#000000",
+            "button_hover_background": "#333333",
+            "button_text_color": "#ffffff",
+            "section_padding": 40,
+            "mobile_section_padding": 20,
+            "content_gap": 40,
+            "mobile_content_gap": 24,
+            "heading_margin": 16,
+            "text_margin": 20,
+            "button_text_size": 14,
+            "button_padding_vertical": 12,
+            "button_padding_horizontal": 24,
+            "button_border_radius": 6,
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8134963_einEn7"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -254,6 +303,7 @@
     "cs_tb_featured_collections_grid_Hdhrrt",
     "cs_tb_featured_collections_grid_9MrQ7Q",
     "cs_tb_accordion_FWxeKR",
-    "cs_tb_carousel_kJmFKL"
+    "cs_tb_carousel_kJmFKL",
+    "1751013687115b439c"
   ]
 }
